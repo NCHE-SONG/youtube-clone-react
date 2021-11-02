@@ -5,6 +5,19 @@ import Dropzone from "react-dropzone";
 const { TextArea } = Input;
 const { Title } = Typography;
 
+const PrivateOptions = [
+    {value: 0, label: "Private"},
+    {value: 1, label: "Public"}
+]
+
+const CategoryOptions = [
+    {value: 0, label: "Film & Animation"},
+    {value: 1, label: "Autos & Vehicles"},
+    {value: 2, label: "Music"},
+    {value: 3, label: "Pets & Animals"},
+    {value: 4, label: "Sports"}
+]
+
 function VideoUploadPage() {
     return (
         <div style={{maxWidth: '700px', margin: '2rem auto'}}>
@@ -57,14 +70,19 @@ function VideoUploadPage() {
                 <br/>
 
                 <select onChange>
-                    <option></option>
+                    {PrivateOptions.map((item, index) => (
+                        <option key={index} value={item.value}>{item.label}</option>
+                    ))}
+
                 </select>
 
                 <br/>
                 <br/>
 
                 <select onChange>
-                    <option></option>
+                    {CategoryOptions.map((item, index) => (
+                        <option key={index} value={item.value}>{item.label}</option>
+                    ))}
                 </select>
 
                 <br/>
