@@ -19,6 +19,12 @@ const CategoryOptions = [
 ]
 
 function VideoUploadPage() {
+
+    const [VideoTitle, setVideoTitle] = useState("")
+    const [Description, setDescription] = useState("")
+    const [Private, setPrivate] = useState(0) //private : 0, public : 1
+    const [Category, setCategory] = useState("Film & Animation")
+
     return (
         <div style={{maxWidth: '700px', margin: '2rem auto'}}>
             <div style={{textAlign: 'center', marginBottom: '2rem'}}>
@@ -53,8 +59,8 @@ function VideoUploadPage() {
 
                 <label>Title</label>
                 <Input
-                    onChange
-                    value
+                    onChange={onTitleChange}
+                    value={VideoTitle}
                 />
 
                 <br/>
@@ -62,8 +68,8 @@ function VideoUploadPage() {
 
                 <label>Description</label>
                 <TextArea
-                    onChange
-                    value
+                    onChange={onDescriptionChange}
+                    value={Description}
                 />
 
                 <br/>
