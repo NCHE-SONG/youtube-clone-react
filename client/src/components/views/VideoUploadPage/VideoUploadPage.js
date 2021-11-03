@@ -101,9 +101,11 @@ function VideoUploadPage() {
                     </Dropzone>
 
                     {/* Thumbnail */}
+                    {ThumbnailPath &&
                     <div>
-                        <img src alt />
+                        <img src={`http://localhost:5000/${ThumbnailPath}`} alt="thumbnail" />
                     </div>
+                    }
                 </div>
 
                 <br/>
