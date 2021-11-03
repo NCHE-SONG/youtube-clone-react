@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 //const { Video } = require("../models/Video");
+const { noSpace } =require("../utils/trim")
 const { auth } = require("../middleware/auth");
 const multer = require("multer");
 const ffmpeg = require("fluent-ffmpeg");
 
 
 const path = require("path");
+let fileName = '';
 
 //Storage Multer Config
 let storage = multer.diskStorage({
@@ -14,10 +16,11 @@ let storage = multer.diskStorage({
         cb(null, "uploads/");
     },
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}_${file.originalname}`);
+        fileName = noSpace(file.originalname)
+        cb(null, `${Date.now()}_${fileName}`);
     },
     fileFilter: (req, file, cb) => {
-        const ext = path.extname(file.originalname);
+        const ext = path.extname(fileName);
         if (ext !== '.mp4') {
             return cb(res.status(400).end('only mp4 is allowed'), false);
         }
