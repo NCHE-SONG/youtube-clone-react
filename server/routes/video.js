@@ -46,10 +46,10 @@ router.post('/uploads', (req, res) => {
 })
 
 router.post('/uploadVideo', (req, res) => {
-    // 비디오 정보 DB에 저장
     // 인스턴스화 후 정보 저장
     const video = new Video(req.body)
 
+    // 비디오 정보 DB에 저장
     video.save((err, doc) => {
         if(err) return res.json({success: false, err})
         res.status(200).json({success: true})
