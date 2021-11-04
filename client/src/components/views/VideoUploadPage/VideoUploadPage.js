@@ -20,7 +20,7 @@ const CategoryOptions = [
     {value: 4, label: "Sports"}
 ]
 
-function VideoUploadPage() {
+function VideoUploadPage(props) {
 
     const user = useSelector(state => state.user);
     const [VideoTitle, setVideoTitle] = useState("")
@@ -96,7 +96,10 @@ function VideoUploadPage() {
         Axios.post('/api/video/uploadVideo', variables)
             .then(response => {
                 if(response.data.success){
-
+                    message.success('Video upload success')
+                    setTimeout(() => {
+                        props.history.push('/')
+                    }, 1000)
                 }else {
                     alert('Failed to upload the video')
                 }
