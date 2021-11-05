@@ -80,11 +80,10 @@ router.post('/thumbnails', (req, res) => {
     // 썸네일 생성
     ffmpeg(req.body.url)
         .on('filenames', function (filenames) {
-            console.log("filenames", filenames)
             filePath = "thumbnails/" + filenames[0]
         })
         .on('end', function (){
-            return res.json({success: true, url: filePath, fileDuration: fileDuration})
+            return res.json({success: true, url: filePath, duration: fileDuration})
         })
         .on('error', function (err) {
             return res.json({success: false, err})
