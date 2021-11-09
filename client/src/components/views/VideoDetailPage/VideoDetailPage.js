@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import {Row, Col, List, Avatar} from 'antd'
-import Axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import {Row, Col, List, Avatar} from 'antd';
+import Axios from 'axios';
 
 function VideoDetailPage(props) {
 
@@ -14,10 +14,10 @@ function VideoDetailPage(props) {
         Axios.post('/api/video/getVideoDetail', variable)
             .then(response => {
                 if(response.data.success){
-                    console.log(response.data.videoDetail)
-                    setVideoDetail(response.data.videoDetail)
+                    console.log('Hello ~ useEffect', response.data.video)
+                    setVideoDetail(response.data.video)
                 } else {
-                    alert('Failed to get a video Info')
+                    alert('Failed to get a video info')
                 }
             })
     }, [])
@@ -27,7 +27,7 @@ function VideoDetailPage(props) {
             <Row gutter={[16, 16]}>
                 <Col lg={18} xs={24}>
                     <div style={{ width: '100%', padding: '3rem rem' }}>
-                        <video style={{width: '100%'}} src={`http://localhost:5000/${VideoDetail.url}`} controls />
+                        <video style={{width: '100%'}} src={`http://localhost:5000/${VideoDetail.filePath}`} controls />
 
                         <List.Item
                             actions
@@ -51,7 +51,7 @@ function VideoDetailPage(props) {
         )
     }
 
-    return "loading..."
+    return <div>"loading..."</div>
 
 
 
