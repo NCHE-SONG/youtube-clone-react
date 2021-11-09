@@ -61,7 +61,7 @@ router.get('/getVideos', (req, res) => {
     // DB에서 비디오를 가져와 클라이언트에 보낸다.
     //video collection 모든 documents 가져옴.
     Video.find()
-        .populate('writer')
+        .populate('writer') // writer document data 모두 가져오기 위해서
         .exec((err, videos) => {
             if(err) return res.status(400).send(err);
             res.status(200).json({ success: true, videos })
