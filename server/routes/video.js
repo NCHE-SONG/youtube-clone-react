@@ -61,7 +61,7 @@ router.get('/getVideos', (req, res) => {
     // DB에서 비디오를 가져와 클라이언트에 보낸다.
     //video collection 모든 documents 가져옴.
     Video.find()
-        .populate('writer')
+        .populate('writer') // writer document data 모두 가져오기 위해서
         .exec((err, videos) => {
             if(err) return res.status(400).send(err);
             res.status(200).json({ success: true, videos })
@@ -94,6 +94,16 @@ router.post('/thumbnails', (req, res) => {
             folder: 'thumbnails',
             size: '320x240',
             filename: 'thumbnail-%b.png'
+        })
+})
+
+router.post('/getVideoDetail', (req, res) => {
+    console.log('Hello getVideoDetail router')
+    Video.findOne({'_id' : req.body.videoId} ) //Video.findOne({ '_id' : "6184b0c1b9feb55fe459af59" })
+        .populate('writer')
+        .exec((err, video) => {
+            if(err) return res.status(400).send(err);
+            res.status(200).json({ success: true, video })
         })
 })
 
