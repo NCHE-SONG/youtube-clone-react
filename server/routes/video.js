@@ -97,4 +97,14 @@ router.post('/thumbnails', (req, res) => {
         })
 })
 
+router.post('/getVideoDetail', (req, res) => {
+    console.log('Hello getVideoDetail router')
+    Video.findOne({'_id' : req.body.videoId} ) //Video.findOne({ '_id' : "6184b0c1b9feb55fe459af59" })
+        .populate('writer')
+        .exec((err, video) => {
+            if(err) return res.status(400).send(err);
+            res.status(200).json({ success: true, video })
+        })
+})
+
 module.exports= router;
