@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import {Row, Col, List, Avatar} from 'antd';
-import Axios from 'axios';
-
+import React, { useEffect, useState } from 'react'
+import {Row, Col, List, Avatar} from 'antd'
+import Axios from 'axios'
 import SideVideo from './Sections/SideVideo'
 
 function VideoDetailPage(props) {
 
     const videoId = props.match.params.videoId //App.js Route uri :  video/:videoId
     const [VideoDetail, setVideoDetail] = useState([])
-
-
     const variable = {videoId: videoId}
 
     useEffect(() =>{
         Axios.post('/api/video/getVideoDetail', variable)
             .then(response => {
                 if(response.data.success){
-                    console.log('Hello ~ useEffect', response.data.video)
                     setVideoDetail(response.data.video)
                 } else {
                     alert('Failed to get a video info')
@@ -47,15 +43,13 @@ function VideoDetailPage(props) {
 
                 </Col>
                 <Col lg={6} xs={24}>
-                    <SideVideo />
+                    <SideVideo videoId={videoId} />
                 </Col>
             </Row>
         )
     }
 
     return <div>"loading..."</div>
-
-
 
 }
 
