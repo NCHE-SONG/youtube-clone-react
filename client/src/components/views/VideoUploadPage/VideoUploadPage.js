@@ -86,7 +86,7 @@ function VideoUploadPage(props) {
             writer : user.userData._id,
             title: VideoTitle,
             description: Description,
-            privach: Private,
+            privacy: Private,
             filePath: FilePath,
             category: Category,
             duration: Duration,
