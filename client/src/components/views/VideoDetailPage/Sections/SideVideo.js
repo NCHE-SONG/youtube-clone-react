@@ -18,11 +18,12 @@ function SideVideo(props) {
     }, [])
 
     const renderSideVideo = sideVideos.map((video, index) => {
-        if(currentVideoId !== video._id){
-            var minutes = Math.floor(video.duration / 60);
-            var seconds = Math.floor(video.duration - minutes * 60);
 
-            return <div key={index} style={{display: 'flex', marginTop: '1rem', padding: '0 2rem'}}>
+        let minutes = Math.floor(video.duration / 60);
+        let seconds = Math.floor(video.duration - minutes * 60);
+
+        return (currentVideoId !== video._id) ?
+            <div key={index} style={{display: 'flex', marginTop: '1rem', padding: '0 2rem'}}>
                 <div style={{width: '40%', marginRight: '1rem'}}>
                     <a href={`/video/${video._id}`} style={{color: 'gray'}}>
                         <img style={{width: '100%', height: '100%'}} src={`http://localhost:5000/${video.thumbnail}`} alt='thumbnail' />
@@ -37,17 +38,15 @@ function SideVideo(props) {
                         <span>{minutes} : {seconds}</span>
                     </a>
                 </div>
+            </div> : <div key={index}></div>
 
-            </div>
-        }
     })
 
     return (
-
-        <React.Fragment>
+        <>
             <div style={{ marginTop:'3rem' }}></div>
             {renderSideVideo}
-        </React.Fragment>
+        </>
     )
 }
 
