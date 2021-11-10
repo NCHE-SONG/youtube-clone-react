@@ -31,11 +31,7 @@ function LandingPage() {
             <div key={index} style={{position: 'relative'}}>
                 <a href={`/video/${video._id}`}>
                 <img style={{width: '100%'}} src={`http://localhost:5000/${video.thumbnail}`} alt="thumbnail"/>
-                <div className=" duration"
-                     style={{ bottom: 0, right:0, position: 'absolute', margin: '4px',
-                         color: '#fff', backgroundColor: 'rgba(17, 17, 17, 0.8)', opacity: 0.8,
-                         padding: '2px 4px', borderRadius:'2px', letterSpacing:'0.5px', fontSize:'12px',
-                         fontWeight:'500', lineHeight:'12px' }}>
+                <div className="duration">
                     <span>{minutes} : {seconds}</span>
                 </div>
                 </a>
