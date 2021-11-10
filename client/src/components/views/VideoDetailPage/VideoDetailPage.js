@@ -47,6 +47,7 @@ function VideoDetailPage() {
                     <SideVideo videoId={videoId} />
                 </Col>
             </Row>
+            
             : <div>"loading..."</div>
     )
 

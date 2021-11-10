@@ -39,6 +39,7 @@ function SideVideo(props) {
                     </a>
                 </div>
             </div> : <div key={index}></div>
+
     })
 
     return (
